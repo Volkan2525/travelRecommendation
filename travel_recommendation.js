@@ -4,51 +4,27 @@ document.getElementById("searchbutton").addEventListener('click',search);
 
 
 async function search(){
-    let country = [];
-    let beach = [];
-    let temple = [];
+    
 
     let myRequest= ('travel_recommendation_api.json');
     await fetch(myRequest).then(res =>res.json())
     .then((res)=>{
         let keyword = stxt.value.toString().toLowerCase();
-        country.push(res.countries.find(c => c.name.toLowerCase().includes(keyword)));
-        beach.push(res.beaches.find(b => (JSON.stringify(b)).toString().toLowerCase().includes(keyword)));
-        temple.push(res.temples.find(t => (JSON.stringify(t)).toString().toLowerCase().includes(keyword)));
+        let country = (res.countries.filter(c => (JSON.stringify(c.cities)).toString().toLowerCase().includes(keyword)));
+        let beach =  (res.beaches.filter(b => (JSON.stringify(b)).toString().toLowerCase().includes(keyword)));
+        let temple = (res.temples.filter(t => (JSON.stringify(t)).toString().toLowerCase().includes(keyword)));
 
-        let recommendations = [];
 
-        if(keyword.toLowerCase() != "country" && keyword.toLowerCase() != "beach" && keyword.toLowerCase() != "temple"){
-            recommendations.concat(country,beach,temple);
-            console.
+        if (keyword == "country")
+            console.log(country);
+        else if (keyword == "beach")        
+            console.log(beach);
+        else if (keyword=="temple")
+            console.log(temple);
+        else {
+            let recommendations = country.concat(beach,temple);
+            console.log(recommendations);           
         }
-
-        if(country[0]){
-            let cities_ = country.map(country => country.cities)[0];
-            cities_.forEach((cities_0) => {
-                let name_ = cities_0.name;
-                let description_ = cities_0.description;
-                let imageurl_ = "";   
-                recommendations.push({"name":name_, "description":description_, "imageurl":imageurl_});
-            });
-        }
-        if(beach[0]){
-            beach.forEach((beach0) => {
-                let name_ = beach0.name;
-                let description_ = beach0.description;
-                let imageurl_ = "";   
-                recommendations.push({"name":name_, "description":description_, "imageurl":imageurl_});
-            });
-        }
-        if(temple[0]){
-            temple.forEach((temple0) => {
-                let name_ = temple0.name;
-                let description_ = temple0.description;
-                let imageurl_ = "";   
-                recommendations.push({"name":name_, "description":description_, "imageurl":imageurl_});
-            });
-        }
-        console.log(recommendations);
 
     }).catch((err)=>{
         window.alert(err);
