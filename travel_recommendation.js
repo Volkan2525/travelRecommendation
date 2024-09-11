@@ -12,11 +12,16 @@ async function search(){
     await fetch(myRequest).then(res =>res.json())
     .then((res)=>{
         let keyword = stxt.value.toString().toLowerCase();
-        country.push(res.countries.find(c => c.name.toLowerCase().toString().includes(keyword)));
-        beach.push(res.beaches.find(b => b.name.toLowerCase().toString().includes(keyword)));
-        temple.push(res.temples.find(t => t.name.toLowerCase().toString().includes(keyword)));
+        country.push(res.countries.find(c => c.name.toLowerCase().includes(keyword)));
+        beach.push(res.beaches.find(b => (JSON.stringify(b)).toString().toLowerCase().includes(keyword)));
+        temple.push(res.temples.find(t => (JSON.stringify(t)).toString().toLowerCase().includes(keyword)));
 
         let recommendations = [];
+
+        if(keyword.toLowerCase() != "country" && keyword.toLowerCase() != "beach" && keyword.toLowerCase() != "temple"){
+            recommendations.concat(country,beach,temple);
+            console.
+        }
 
         if(country[0]){
             let cities_ = country.map(country => country.cities)[0];
