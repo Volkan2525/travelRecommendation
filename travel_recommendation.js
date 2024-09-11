@@ -6,6 +6,8 @@ document.getElementById("searchbutton").addEventListener('click',search);
 async function search(){
     
 
+    document.getElementById("firstDiv").innerText += "";
+    document.getElementById("secondDiv").innerHTML = "";
     let myRequest= ('travel_recommendation_api.json');
     await fetch(myRequest).then(res =>res.json())
     .then((res)=>{
@@ -18,33 +20,18 @@ async function search(){
         let cities0 = [];
         _cities.forEach(element => {
             element.forEach(item =>{
-                cities0.push(item);
+                if(JSON.stringify(item).toLowerCase().includes(keyword))
+                    cities0.push(item);
             });            
         });
 
-        //console.log(cities0);
-
-
         let recommendations = cities0.concat(beach,temple);
-            
 
+        document.getElementById("firstDiv").innerHTML = recommendations[0].name+"<br>";
+        document.getElementById("firstDiv").innerText += recommendations[0].description;
+        document.getElementById("secondDiv").innerHTML = recommendations[1].name+"<br>";
+        document.getElementById("secondDiv").innerText += recommendations[1].description;
 
-        //let rec = recommendations.map(item => item.description);
-        //console.log(recommendations);
-        document.getElementById("firstDiv").innerText = recommendations[0].description;
-        document.getElementById("firstDiv").innerText = recommendations[1].description;
-        /*if (keyword == "country"){
-            console.log(country);
-            //document.getElementById("firstDiv").innerText= country.description;
-        }
-        else if (keyword == "beach")        
-            console.log(beach);
-        else if (keyword=="temple")
-            console.log(temple);
-        else if(keyword) {
-            let recommendations = country.concat(beach,temple);
-            console.log(recommendations);           
-        }*/
 
     }).catch((err)=>{
         window.alert(err);
