@@ -34,7 +34,7 @@ async function search(){
 
 
     }).catch((err)=>{
-        window.alert(err);
+        console.log(err);
     });
 
 }
