@@ -27,7 +27,20 @@ async function search(){
             });            
         });
 
-        let recommendations = cities0.concat(beach,temple);
+        let _cities1 = res.countries.map(item => item.cities);
+        let cities1 = [];
+        _cities1.forEach(element => {
+            element.forEach(item =>{
+                    cities1.push(item);
+            });            
+        });
+
+        let recommendations = [];
+        if(keyword=="beaches" || keyword=="beach"){recommendations = res.beaches;}
+        else if(keyword=="temple" || keyword=="temples"){recommendations = res.temples;}
+        else if(keyword=="country" || keyword=="countries"){recommendations = cities1;}
+        else
+            recommendations = cities0.concat(beach,temple);
 
         document.getElementById("firstDiv").innerHTML = recommendations[0].name+"<br>";
         document.getElementById("firstDiv").innerText += recommendations[0].description;
