@@ -59,7 +59,8 @@ async function search(){
     figCaption.innerText+=recommendations[i].description;
     figCaption.style.backgroundColor = "white";
     figCaption.style.opacity = "0.9";
-    figCaption.style.height = "50px";
+    figCaption.style.minHeight = "70px";
+    figCaption.style.height = "auto";
 
     figureIMG.src = recommendations[i].imageUrl;
     figureIMG.style.width = "100%";
