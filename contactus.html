@@ -3,28 +3,28 @@
 <head>
 
 </head>
-<body style = "overflow:hidden; background-image:url(background1.jpg); background-size:2900px auto; background-position:center; background-repeat:no-repeat;" >
+<body style = "overflow:hidden; background-image:url(background1.jpg); background-size:3000px 1200px; background-repeat:no-repeat;" >
 
 <nav id="nav">
-<div style="background-color:#ccaabb; border-radius:25px; border-width:0px; border-style:solid; padding-top:5px; margin:0px;">
+<div style="background-color:#ffffff; border-radius:25px; border-width:0px; border-style:solid; padding-top:5px; margin:0px; font-size: 20pt;">
 <ul style="text-align:center;">
     <il style="text-align:left;"><h1>TravelBoom</h1></il>    
     <il><a href="./travel_recommendation.html">Home</a></il>    
     <il><a href="./aboutus.html">About Us</a></il>    
     <il><a href="./contactus.html">Contact Us</a></il> 
 <div style="text-align:right; padding-bottom:10px; padding-right:10px;"> 
-    <il><input style="height:30px; width:300px; border-radius:10px;" id="searchtext" placeholder="Enter a destination or keyword"></input></il>
-    <il><button style="height:30px; width:100px; border-radius:10px;" id="searchbutton">Search</button></il>
-    <il><button style="height:30px; width:100px; border-radius:10px;" id="clearbutton">Clear</button></il>
+    <il><input style="visibility:hidden;  height:30px; width:300px; border-radius:10px;" id="searchtext" placeholder="Enter a destination or keyword"></input></il>
+    <il><button style="visibility:hidden; height:30px; width:100px; border-radius:10px;" id="searchbutton">Search</button></il>
+    <il><button style="visibility:hidden; height:30px; width:100px; border-radius:10px;" id="clearbutton">Clear</button></il>
 </div>
 </ul>
 </div>
 
 <nav>
-<div style="padding-left:80px; margin-top:180px; width:600px; font-size:29pt; border-style:1px; border-width:1px; overflow:fixed; color:white; background-color:lightgray;">
+<div style="padding-left:80px; margin-top:180px; width:600px; font-size:29pt; border-style:1px; border-width:1px; color:white; background-color:lightgray;">
     <h2>CONTUCT US</h2>
 </div>
-<div style="padding-left:80px; padding-top:30px; padding-bottom:30px; width:600px; border-style:1px; border-width:1px; overflow:fixed; color:white; background-color:gray;">
+<div style="padding-left:80px; padding-top:30px; padding-bottom:30px; width:600px; border-style:1px; border-width:1px; color:white; background-color:gray;">
     <p>Get in touch
     </p>
 </div>
@@ -40,12 +40,16 @@
     <br>
     <label for="namefield" style="font-size:15pt; color:white;">Message</label>
     <br>
-    <input type="text" id="messagefield" style="opacity:0.8;border-style:solid; border-color:black; border-width:1px; height:240px; width:400px; color:black;background-color:white;" ></input>
+    <textarea  id="messagefield" style="opacity:0.8;border-style:solid; border-color:black; border-width:1px; height:240px; width:400px; color:black;background-color:white;" ></textarea>
     <br>
-    <button type="submit" id="submitbutton" style="border-style:solid; border-width:1px; height:40px; color:white; width:408px; background-color:gray;" >Submit</button>
+    <button type="submit" id="submitbutton" onClick="submitform()" style="border-style:solid; border-width:1px; height:40px; color:white; width:408px; background-color:gray;" >Submit</button>
 </div>
 
 </body>
 
-<script src="./travel_recommendation.js" content-type="application/json"></script>
+<script>
+    function submitform(){
+        window.alert("Form submit button clicked");
+    }
+</script>
 </html>
