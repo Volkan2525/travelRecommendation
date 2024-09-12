@@ -41,11 +41,14 @@ async function search(){
         else if(keyword=="country" || keyword=="countries"){recommendations = cities1;}
         else
             recommendations = cities0.concat(beach,temple);
-
+        
+            document.getElementById("secondDivIMG").getAttribute("src")
         document.getElementById("firstDiv").innerHTML = recommendations[0].name+"<br>";
         document.getElementById("firstDiv").innerText += recommendations[0].description;
+        document.getElementById("firstDivIMG").setAttribute("src",recommendations[0].imageUrl);
         document.getElementById("secondDiv").innerHTML = recommendations[1].name+"<br>";
         document.getElementById("secondDiv").innerText += recommendations[1].description;
+        document.getElementById("secondDivIMG").setAttribute("src",recommendations[1].imageUrl);
 
 
     }).catch((err)=>{
