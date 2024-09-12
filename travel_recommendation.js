@@ -42,14 +42,36 @@ async function search(){
         else
             recommendations = cities0.concat(beach,temple);
         
-            document.getElementById("secondDivIMG").getAttribute("src")
-        document.getElementById("firstDiv").innerHTML = recommendations[0].name+"<br>";
+            let countRec = recommendations.length;
+            let rndNum = Math.random();
+
+        
+        
+
+        //document.getElementById("secondDivIMG").getAttribute("src")
+        /*document.getElementById("firstDiv").innerHTML = recommendations[0].name+"<br>";
         document.getElementById("firstDiv").innerText += recommendations[0].description;
         document.getElementById("firstDivIMG").setAttribute("src",recommendations[0].imageUrl);
         document.getElementById("secondDiv").innerHTML = recommendations[1].name+"<br>";
         document.getElementById("secondDiv").innerText += recommendations[1].description;
-        document.getElementById("secondDivIMG").setAttribute("src",recommendations[1].imageUrl);
+        document.getElementById("secondDivIMG").setAttribute("src",recommendations[1].imageUrl);*/
 
+        for(let i=0;i<recommendations.length;i++){
+            let figure = document.createElement("figure");
+            let figCaption = document.createElement("figcaption");
+            let figureIMG= document.createElement("img");
+    figCaption.innerHTML=recommendations[i].name+"<br>";
+    figCaption.innerText=recommendations[i].description;
+    figCaption.style.backgroundColor = "white";
+    figCaption.style.opacity = "0.9";
+    figCaption.style.height = "50px";
+
+    figureIMG.src = recommendations[i].imageUrl;
+    figureIMG.style.width = "100%";
+    figure.append(figureIMG);
+    figure.append(figCaption);
+            document.getElementById("recdiv").append(figure);
+        }
 
     }).catch((err)=>{
         console.log(err);
