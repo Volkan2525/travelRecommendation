@@ -8,8 +8,7 @@ function cleartext(){
 }
 
 async function search(){
-    document.getElementById("firstDiv").innerText += "";
-    document.getElementById("secondDiv").innerHTML = "";
+    document.getElementById("recdiv").innerHTML = "";
     let myRequest= ('travel_recommendation_api.json');
     await fetch(myRequest).then(res =>res.json())
     .then((res)=>{
@@ -42,12 +41,8 @@ async function search(){
         else
             recommendations = cities0.concat(beach,temple);
         
-            let countRec = recommendations.length;
-            let rndNum = Math.random();
-
+ 
         
-        
-
         //document.getElementById("secondDivIMG").getAttribute("src")
         /*document.getElementById("firstDiv").innerHTML = recommendations[0].name+"<br>";
         document.getElementById("firstDiv").innerText += recommendations[0].description;
@@ -60,8 +55,8 @@ async function search(){
             let figure = document.createElement("figure");
             let figCaption = document.createElement("figcaption");
             let figureIMG= document.createElement("img");
-    figCaption.innerHTML=recommendations[i].name+"<br>";
-    figCaption.innerText=recommendations[i].description;
+    figCaption.innerHTML=recommendations[i].name+"\n";
+    figCaption.innerText+=recommendations[i].description;
     figCaption.style.backgroundColor = "white";
     figCaption.style.opacity = "0.9";
     figCaption.style.height = "50px";
