@@ -1,11 +1,13 @@
 var stxt = document.getElementById("searchtext");
 var sbutton = document.getElementById("searchbutton");
 document.getElementById("searchbutton").addEventListener('click',search);
+document.getElementById("clearbutton").addEventListener('click',cleartext);
 
+function cleartext(){
+    document.getElementById("searchtext").value = "";
+}
 
 async function search(){
-    
-
     document.getElementById("firstDiv").innerText += "";
     document.getElementById("secondDiv").innerHTML = "";
     let myRequest= ('travel_recommendation_api.json');
